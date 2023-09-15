@@ -9,8 +9,13 @@ public class Steering : MonoBehaviour
 
     public float MaxSpeed = 5;
     public float Accelleration = 1;
-    public float TurnSpeed = 30;
+    //privates do not how up in editor
     private float CurrentSpeed;
+    //..unless tagged with SerializeField
+    [SerializeField] private float TurnSpeed = 30;
+    [SerializeField] Color myColor;
+    [SerializeField] private Material myMaterial;
+
 
     // Update is called once per frame
     void Update()
@@ -82,19 +87,22 @@ public class Steering : MonoBehaviour
         }
     }
 
-    public void Recoil(Vector3 direction)
+    private void OnValidate()
     {
-        StartCoroutine(DoRecoil(direction));
-    }
-
-    private IEnumerator DoRecoil(Vector3 direction)
-    {
-        Vector3 position = transform.position;
-        transform.position += direction*0.25f;
-        while (Vector3.Distance(transform.position, position) > 0.02f)
+        if(myMaterial == null)
         {
-            transform.position = Vector3.Lerp(transform.position, position, 10*Time.deltaTime);
-            yield return new WaitForEndOfFrame();
+            myMaterial = GetComponent<Renderer>().material;
+        }
+
+        if(myMaterial != null)
+        {
+            myMaterial.color = myColor;
+        }
+        if(Accelleration <0)
+        {
+            //We do not allow designers to set acc to less than zero
+            Accelleration = 0;
         }
     }
+
 }

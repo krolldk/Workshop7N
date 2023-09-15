@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7020677306535733658}
   - component: {fileID: 8584853026241771322}
   - component: {fileID: 6109647312788752742}
-  - component: {fileID: 4524900162924455549}
+  - component: {fileID: 1243708093088947802}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -29,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2386823467619129218}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7005911, y: -0, z: -0, w: 0.7135631}
+  m_LocalRotation: {x: 0.61679876, y: -0.000000029802322, z: -0.000000059604645, w: 0.7871209}
   m_LocalPosition: {x: 0, y: 0.021594873, z: 0.3016693}
   m_LocalScale: {x: 0.74855906, y: 0.74855906, z: 0.74855906}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8750891584684576463}
-  m_LocalEulerAnglesHint: {x: 88.949, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 76.165, y: 0, z: 0}
 --- !u!114 &7658073998155204215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3260
+  m_VersionIndex: 3272
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -652,28 +652,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2386823467619129218}
   m_Mesh: {fileID: 0}
---- !u!64 &4524900162924455549
-MeshCollider:
+--- !u!114 &1243708093088947802
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2386823467619129218}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59cae9b6685a624baa86aab695e1c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunSpeed: 15
+  Steer: {fileID: 8552586347178994197}
 --- !u!1 &3119118053718457361
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,6 +681,7 @@ GameObject:
   - component: {fileID: 8173300968238118142}
   - component: {fileID: 3631969285043274088}
   - component: {fileID: 8552586347178994197}
+  - component: {fileID: 7647386403835916087}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -1164,7 +1157,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2943
+  m_VersionIndex: 2952
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1217,7 +1210,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1445d5abf2f190243a87f74254ea9f0a, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1266,7 +1259,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!114 &8552586347178994197
@@ -1281,10 +1274,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac111582a2f6297458fbb37e300b09e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControllerMode: 0
+  ControllerMode: 1
   MaxSpeed: 5
-  Accelleration: 1
+  Accelleration: 2
   TurnSpeed: 30
+  myColor: {r: 0.02700248, g: 0.2506557, b: 0.38679248, a: 1}
+  myMaterial: {fileID: 0}
+--- !u!54 &7647386403835916087
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3119118053718457361}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4934262169762537145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4934262169762537145}
   serializedVersion: 2
-  m_LocalRotation: {x: 1.1102231e-17, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.82115144, z: 0.4270001}
   m_LocalScale: {x: 1.3359, y: 1.3359, z: 1.3359}
   m_ConstrainProportionsScale: 0
@@ -1655,7 +1677,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2923
+  m_VersionIndex: 2932
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

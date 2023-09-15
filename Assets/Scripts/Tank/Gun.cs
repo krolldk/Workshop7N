@@ -35,6 +35,44 @@ public class Gun : MonoBehaviour
 
     private void Fire()
     {
-        Steer.Recoil(transform.TransformDirection(Vector3.down));
+        Recoil();
+        CheckHit();
     }
+
+    public void Recoil()
+    {
+        StartCoroutine(DoRecoil());
+    }
+
+    private IEnumerator DoRecoil()
+    {
+        Vector3 position = transform.localPosition;
+        Vector3 direction =transform.parent.InverseTransformDirection(transform.up * -1);
+        transform.localPosition += direction * 0.15f;
+        while (Vector3.Distance(transform.localPosition, position) > 0.02f)
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, position, 10 * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+        transform.localPosition = position;
+    }
+
+    void CheckHit()
+    {
+        Vector3 direction = transform.up;
+        Ray charles = new Ray(transform.position, direction);
+        RaycastHit hit;
+        if(Physics.Raycast(charles, out hit))
+        {
+            //We hit something
+            Collider col = hit.collider;
+            Target t = col.GetComponent<Target>();
+            if(t != null)
+            {
+                t.OnHit(hit.point, transform.position); 
+            }
+         }
+
+    }
+
 }
