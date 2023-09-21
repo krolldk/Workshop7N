@@ -9,7 +9,22 @@ public class HUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        reload.ReloadLeft = 0;        
+        reload.ReloadLeft = 0;
+        Channel<Gun.FireSignal>.Subscribe(OnFireSignal);
+    }
+
+    private void OnFireSignal(Gun.FireSignal firing)
+    {
+        //Gun was fired. Do UI update and gamelogic
+        reload.ReloadLeft = 1f;
+    }
+
+    private void Update()
+    {
+        if(reload.ReloadLeft > 0)
+        {
+            reload.ReloadLeft -= Time.deltaTime;
+        }
     }
 
 }

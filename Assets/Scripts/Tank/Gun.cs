@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public class FireSignal: Signal { };
+
+
     public float GunSpeed;
     public Steering Steer;
 
@@ -37,6 +40,7 @@ public class Gun : MonoBehaviour
     {
         Recoil();
         CheckHit();
+        Channel<FireSignal>.RaiseEvt(new FireSignal());
     }
 
     public void Recoil()
@@ -47,7 +51,7 @@ public class Gun : MonoBehaviour
     private IEnumerator DoRecoil()
     {
         Vector3 position = transform.localPosition;
-        Vector3 direction =transform.parent.InverseTransformDirection(transform.up * -1);
+        Vector3 direction =transform.parent.InverseTransformDirection(transform.forward * -1);
         transform.localPosition += direction * 0.15f;
         while (Vector3.Distance(transform.localPosition, position) > 0.02f)
         {
@@ -59,7 +63,7 @@ public class Gun : MonoBehaviour
 
     void CheckHit()
     {
-        Vector3 direction = transform.up;
+        Vector3 direction = transform.forward;
         Ray charles = new Ray(transform.position, direction);
         RaycastHit hit;
         if(Physics.Raycast(charles, out hit))

@@ -66,11 +66,11 @@ public class Steering : MonoBehaviour
 
     void TurnLeft()
     {
-        transform.Rotate(0, TurnSpeed * Time.deltaTime, 0);
+        transform.Rotate(0, -TurnSpeed * Time.deltaTime, 0);
     }
     void TurnRight()
     {
-        transform.Rotate(0, -TurnSpeed * Time.deltaTime, 0);
+        transform.Rotate(0, TurnSpeed * Time.deltaTime, 0);
     }
 
 
@@ -89,10 +89,6 @@ public class Steering : MonoBehaviour
 
     private void OnValidate()
     {
-        if(myMaterial == null)
-        {
-            myMaterial = GetComponent<Renderer>().material;
-        }
 
         if(myMaterial != null)
         {

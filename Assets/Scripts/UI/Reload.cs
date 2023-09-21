@@ -14,6 +14,10 @@ public class Reload : MonoBehaviour
             value = Mathf.Clamp01(value);
             Background.fillAmount = 1 - value;
         }
+        get
+        {
+            return 1-Background.fillAmount;
+        }
     }
 
     // Start is called before the first frame update
@@ -22,9 +26,4 @@ public class Reload : MonoBehaviour
         Background = GetComponent<Image>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

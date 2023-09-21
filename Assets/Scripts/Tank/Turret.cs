@@ -7,6 +7,11 @@ public class Turret : MonoBehaviour
     public float TurnSpeed = 20f;
     public Steering Parent;
 
+    private void Start()
+    {
+        //Start is called once, just before Start is called first time
+    }
+
     // Update is called once per frame
     void Update()
     {
