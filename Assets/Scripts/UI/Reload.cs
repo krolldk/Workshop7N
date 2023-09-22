@@ -26,4 +26,9 @@ public class Reload : MonoBehaviour
         Background = GetComponent<Image>();
     }
 
+    public void OnButtonClicked()
+    {
+        ReloadLeft = 1;
+    }
+
 }
