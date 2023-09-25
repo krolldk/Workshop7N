@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Reload : MonoBehaviour
+public class CoolDownButton : MonoBehaviour
 {
     Image Background;
 

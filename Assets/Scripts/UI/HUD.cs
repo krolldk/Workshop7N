@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
-    public Reload reload;
+    public CoolDownButton reload;
 
     // Start is called before the first frame update
     void Start()

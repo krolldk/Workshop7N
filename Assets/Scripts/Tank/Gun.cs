@@ -40,7 +40,10 @@ public class Gun : MonoBehaviour
     {
         Recoil();
         CheckHit();
-        Channel<FireSignal>.RaiseEvt(new FireSignal());
+        if (Steer.ControllerMode == Steering.Mode.Player)
+        {
+            Channel<FireSignal>.RaiseEvt(new FireSignal());
+        }
     }
 
     public void Recoil()
